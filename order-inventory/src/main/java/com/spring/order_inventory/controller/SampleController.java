@@ -1,4 +1,4 @@
 package com.spring.order_inventory.controller;
 
-public class ShipmentsController {
+public class SampleController {
 }
