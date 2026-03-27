@@ -7,8 +7,9 @@ import lombok.Data;
 import java.util.List;
 
 @Entity
-@Table(name = "shipment")
+//@Table(name = "shipment")
 @Data
+@Table(name = "shipments")
 public class Shipment {
 
     @Id
