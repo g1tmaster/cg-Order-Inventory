@@ -1,25 +1,27 @@
 package com.spring.order_inventory.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "stores")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Store{
+public class Store {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "store_id", nullable = false)
+
+    @Column(name = "store_id")
     private Long storeId;
 
-    @Column(name = "store_name", nullable = false, unique = true)
+    @Column(name = "store_name")
     private String storeName;
 
     @Column(name = "web_address")
@@ -44,4 +46,21 @@ public class Store{
 
     @Column(name = "logo_last_updated")
     private LocalDateTime logoLastUpdated;
+
+
+
+    // Store → Orders
+    @OneToMany(mappedBy = "store", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Order> orders;
+
+    // Store → Shipments
+    @OneToMany(mappedBy = "store", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Shipment> shipments;
+
+    // Store → Inventory
+    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Inventory> inventories;
 }
