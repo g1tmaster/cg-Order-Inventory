@@ -14,7 +14,7 @@ public class Inventory {
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "store_id", nullable = false)
-        private Stores storeId;
+        private Store storeId;
 
 
         @ManyToOne(fetch = FetchType.LAZY)
@@ -27,7 +27,7 @@ public class Inventory {
 
         public Inventory() {}
 
-        public Inventory(Stores storeId, Product product, Long quantity) {
+        public Inventory(Store storeId, Product product, Long quantity) {
             this.storeId = storeId;
             this.product = product;
             this.quantity = quantity;
@@ -41,11 +41,11 @@ public class Inventory {
         this.inventoryId = inventoryId;
     }
 
-    public Stores getStoreId() {
+    public Store getStoreId() {
         return storeId;
     }
 
-    public void setStoreId(Stores storeId) {
+    public void setStoreId(Store storeId) {
         this.storeId = storeId;
     }
 
