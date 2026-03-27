@@ -1,12 +1,14 @@
 package com.spring.order_inventory.entity;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,7 +29,7 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "product_id")
-    private long productId;
+    private Long productId;
 	
 	@Column(name = "product_name", nullable = false)
     private String productName;
@@ -46,4 +48,10 @@ public class Product {
 
     @Column(name = "rating")
     private int rating;
+    
+    @OneToMany(mappedBy = "product")
+    private List<OrderItem> orderItems;
+    
+    @OneToMany(mappedBy = "product")
+    private List<Inventory> inventories;
 }
