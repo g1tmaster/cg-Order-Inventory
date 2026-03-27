@@ -9,7 +9,6 @@ import java.util.List;
 @Entity
 @Table(name = "shipment")
 @Data
-@Table
 public class Shipment {
 
     @Id
@@ -36,5 +35,5 @@ public class Shipment {
     //NEW: Shipment → Order_Items
     @OneToMany(mappedBy = "shipment")
     @JsonIgnore
-    private List<Order_Item> orderItems;
+    private List<OrderItem> orderItems;
 }
