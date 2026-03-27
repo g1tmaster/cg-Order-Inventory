@@ -42,7 +42,7 @@ public class Orders {
 	
 	@ManyToOne
 	@JoinColumn(name = "customer_id", nullable = false)
-	private Customers customer;
+	private Customer customer;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "order_status", nullable = false)
@@ -50,7 +50,7 @@ public class Orders {
 	
 	@ManyToOne
 	@JoinColumn(name = "store_id", nullable = false)
-	private Stores store;
+	private Store store;
 	
 	
 }
