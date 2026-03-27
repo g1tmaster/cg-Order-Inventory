@@ -17,7 +17,6 @@ import java.util.List;
 public class Store {
 
     @Id
-
     @Column(name = "store_id")
     private Long storeId;
 
@@ -49,17 +48,17 @@ public class Store {
 
 
 
-    // Store → Orders
+    // Store -> Orders
     @OneToMany(mappedBy = "store", fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Order> orders;
 
-    // Store → Shipments
+    // Store -> Shipments
     @OneToMany(mappedBy = "store", fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Shipment> shipments;
 
-    // Store → Inventory
+    // Store -> Inventory
     @OneToMany(mappedBy = "store", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Inventory> inventories;
