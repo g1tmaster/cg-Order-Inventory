@@ -16,10 +16,10 @@ public class Store{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "store_id")
+    @Column(name = "store_id", nullable = false)
     private Long storeId;
 
-    @Column(name = "store_name")
+    @Column(name = "store_name", nullable = false, unique = true)
     private String storeName;
 
     @Column(name = "web_address")
