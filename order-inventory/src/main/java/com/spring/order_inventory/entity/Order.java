@@ -42,7 +42,7 @@ public class Order {
 	
 	@ManyToOne
 	@JoinColumn(name = "customer_id", nullable = false)
-	private Customer customer;
+	private Customers customer;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "order_status", nullable = false)
