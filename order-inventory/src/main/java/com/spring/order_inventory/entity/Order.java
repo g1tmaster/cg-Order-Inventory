@@ -50,7 +50,7 @@ public class Order {
 	
 	@ManyToOne
 	@JoinColumn(name = "store_id", nullable = false)
-	private Stores store;
+	private Store store;
 	
 	
 }
