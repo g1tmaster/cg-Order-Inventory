@@ -27,8 +27,8 @@ public class Inventory {
 
         public Inventory() {}
 
-        public Inventory(Store storeId, Product product, Long quantity) {
-            this.store = store;
+        public Inventory(Store store, Product product, Long quantity) {
+            this.store = this.store;
             this.product = product;
             this.quantity = quantity;
         }
