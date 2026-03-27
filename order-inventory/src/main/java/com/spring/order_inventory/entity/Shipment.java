@@ -7,9 +7,9 @@ import lombok.Data;
 import java.util.List;
 
 @Entity
-@Table(name = "shipment")
+//@Table(name = "shipment")
 @Data
-@Table
+@Table(name = "shipments")
 public class Shipment {
 
     @Id
@@ -36,5 +36,5 @@ public class Shipment {
     //NEW: Shipment → Order_Items
     @OneToMany(mappedBy = "shipment")
     @JsonIgnore
-    private List<Order_Item> orderItems;
+    private List<OrderItem> orderItems;
 }
