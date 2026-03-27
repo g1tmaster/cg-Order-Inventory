@@ -30,19 +30,19 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Orders {
+public class Order {
     
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "order_id")
-	private int orderId;
+	private long orderId;
 	
 	@Column(name = "order_tms")
 	private LocalDateTime orderTms;
 	
 	@ManyToOne
 	@JoinColumn(name = "customer_id", nullable = false)
-	private Customers customer;
+	private Customer customer;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "order_status", nullable = false)
