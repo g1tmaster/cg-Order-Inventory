@@ -1,0 +1,47 @@
+package com.spring.order_inventory.entity;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "stores")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Store{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "store_id")
+    private Long storeId;
+
+    @Column(name = "store_name")
+    private String storeName;
+
+    @Column(name = "web_address")
+    private String webAddress;
+
+    @Column(name = "physical_address")
+    private String physicalAddress;
+
+    private Double latitude;
+    private Double longitude;
+
+    private String logo;
+
+    @Column(name = "logo_mime_type")
+    private String logoMimeType;
+
+    @Column(name = "logo_filename")
+    private String logoFilename;
+
+    @Column(name = "logo_charset")
+    private String logoCharset;
+
+    @Column(name = "logo_last_updated")
+    private LocalDateTime logoLastUpdated;
+}
