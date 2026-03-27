@@ -1,4 +1,4 @@
 package com.spring.order_inventory.service;
 
-public class SampleService {
+public interface IShipmentsService {
 }
