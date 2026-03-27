@@ -3,6 +3,7 @@ package com.spring.order_inventory.entity;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import com.spring.order_inventory.constants.OrderStatus;
 import org.hibernate.annotations.ManyToAny;
 
 import jakarta.annotation.Generated;
@@ -43,10 +44,10 @@ public class Order {
 	@ManyToOne
 	@JoinColumn(name = "customer_id", nullable = false)
 	private Customer customer;
-	
+
 	@Enumerated(EnumType.STRING)
 	@Column(name = "order_status", nullable = false)
-	private String orderStatus;
+	private OrderStatus orderStatus;
 	
 	@ManyToOne
 	@JoinColumn(name = "store_id", nullable = false)
