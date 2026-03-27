@@ -32,7 +32,9 @@ public class Store {
     private Double latitude;
     private Double longitude;
 
-    private String logo;
+    @Lob
+    @Column(name="logo")
+    private byte[] logo;
 
     @Column(name = "logo_mime_type")
     private String logoMimeType;
