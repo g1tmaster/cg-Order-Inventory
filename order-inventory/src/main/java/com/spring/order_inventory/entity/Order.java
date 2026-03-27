@@ -2,6 +2,7 @@ package com.spring.order_inventory.entity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import com.spring.order_inventory.constants.OrderStatus;
 import org.hibernate.annotations.ManyToAny;
@@ -16,6 +17,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,7 +38,7 @@ public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "order_id")
-	private long orderId;
+	private Long orderId;
 	
 	@Column(name = "order_tms")
 	private LocalDateTime orderTms;
@@ -53,5 +55,6 @@ public class Order {
 	@JoinColumn(name = "store_id", nullable = false)
 	private Store store;
 	
-	
+	@OneToMany(mappedBy = "order")
+	private List<OrderItem> items;
 }

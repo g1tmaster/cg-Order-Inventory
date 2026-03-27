@@ -27,7 +27,7 @@ public class Inventory {
 
         public Inventory() {}
 
-        public Inventory(Store storeId, Product product, Long quantity) {
+        public Inventory(Store store, Product product, Long quantity) {
             this.store = store;
             this.product = product;
             this.quantity = quantity;
@@ -41,12 +41,12 @@ public class Inventory {
         this.inventoryId = inventoryId;
     }
 
-    public Store getStoreId() {
+    public Store getStore() {
         return store;
     }
 
-    public void setStoreId(Store storeId) {
-        this.store = storeId;
+    public void setStore(Store store) {
+        this.store = store;
     }
 
     public Product getProduct() {
