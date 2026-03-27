@@ -41,11 +41,11 @@ public class Inventory {
         this.inventoryId = inventoryId;
     }
 
-    public Store getStoreId() {
+    public Store getStore() {
         return store;
     }
 
-    public void setStoreId(Store store) {
+    public void setStore(Store store) {
         this.store = store;
     }
 

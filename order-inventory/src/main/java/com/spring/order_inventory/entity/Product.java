@@ -44,6 +44,6 @@ public class Product {
     @Column(name = "size", nullable = false, length = 10)
     private String size;
 
-    @Column(name = "rating", nullable = false)
+    @Column(name = "rating")
     private int rating;
 }

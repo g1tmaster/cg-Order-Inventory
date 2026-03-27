@@ -5,11 +5,11 @@ import lombok.Data;
 @Entity
 @Table(name = "order_items")
 @Data
-public class Order_Item {
+public class OrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "line_item_id")
+    @Column(name = "line_item_id", nullable = false)
     private Long lineItemId;
 
     // Many Order_Items belong to one Order
