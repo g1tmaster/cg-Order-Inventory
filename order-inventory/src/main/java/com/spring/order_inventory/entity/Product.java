@@ -47,7 +47,7 @@ public class Product {
     private String size;
 
     @Column(name = "rating")
-    private int rating;
+    private Integer rating;
     
     @OneToMany(mappedBy = "product")
     private List<OrderItem> orderItems;
