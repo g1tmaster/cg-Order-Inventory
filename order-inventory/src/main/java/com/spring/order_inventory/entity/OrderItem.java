@@ -10,7 +10,7 @@ public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "line_item_id", nullable = false)
-    private Long lineItemId;
+    private Integer lineItemId;
 
     // Many Order_Items belong to one Order
     @ManyToOne
