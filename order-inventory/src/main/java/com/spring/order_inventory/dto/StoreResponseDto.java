@@ -1,9 +1,11 @@
 package com.spring.order_inventory.dto;
 
+import lombok.Builder;
 import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
+@Builder
 public class StoreResponseDto {
     private Integer storeId;
     private String storeName;
