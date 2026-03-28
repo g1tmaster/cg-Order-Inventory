@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class OrderItemResponseDTO {
+public class OrderItemResponseDto {
 	private Integer orderItemId;
 
     private Integer productId;

@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class ShipmentResponseDto {
 
-    private Long shipmentId;
+    private Integer shipmentId;
     private String shipmentStatus;
     private String deliveryAddress;
 }

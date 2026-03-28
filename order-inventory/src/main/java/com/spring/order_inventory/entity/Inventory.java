@@ -22,12 +22,12 @@ public class Inventory {
         private Product product;
 
         @Column(name = "product_inventory", nullable = false)
-        private Long quantity;
+        private Integer quantity;
 
 
         public Inventory() {}
 
-        public Inventory(Store store, Product product, Long quantity) {
+        public Inventory(Store store, Product product, Integer quantity) {
             this.store = store;
             this.product = product;
             this.quantity = quantity;
@@ -57,11 +57,11 @@ public class Inventory {
         this.product = product;
     }
 
-    public Long getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Long quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 }

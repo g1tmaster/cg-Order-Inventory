@@ -24,5 +24,5 @@ public class OrderResponseDto {
     private Integer storeId;
     private String storeName;
 
-    private List<OrderItemResponseDTO> items;
+    private List<OrderItemResponseDto> items;
 }
