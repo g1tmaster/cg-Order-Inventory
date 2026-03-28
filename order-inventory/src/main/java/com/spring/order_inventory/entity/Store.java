@@ -18,7 +18,7 @@ public class Store {
 
     @Id
     @Column(name = "store_id")
-    private Long storeId;
+    private Integer storeId;
 
     @Column(name = "store_name")
     private String storeName;

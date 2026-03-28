@@ -15,7 +15,7 @@ public class Shipment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "shipment_id")
-    private Long shipmentId;
+    private Integer shipmentId;
 
     //Many shipments → one store
     @ManyToOne()
