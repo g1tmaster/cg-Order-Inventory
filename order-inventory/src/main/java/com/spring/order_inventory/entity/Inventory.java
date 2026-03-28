@@ -10,7 +10,7 @@ public class Inventory {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "inventory_id")
-        private Long inventoryId;
+        private Integer inventoryId;
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "store_id", nullable = false)
@@ -33,11 +33,11 @@ public class Inventory {
             this.quantity = quantity;
         }
 
-    public Long getInventoryId() {
+    public Integer getInventoryId() {
         return inventoryId;
     }
 
-    public void setInventoryId(Long inventoryId) {
+    public void setInventoryId(Integer inventoryId) {
         this.inventoryId = inventoryId;
     }
 
