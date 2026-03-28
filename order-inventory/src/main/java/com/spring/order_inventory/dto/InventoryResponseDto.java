@@ -17,6 +17,6 @@ public class InventoryResponseDto {
     private Integer inventoryId;
     private Store store;
     private Product product;
-    private Long quantity;
+    private Integer quantity;
 
 }
