@@ -13,7 +13,7 @@ import com.spring.order_inventory.dto.OrderResponseDto;
 
 @Service
 @RequiredArgsConstructor
-public class StoreServiceImpl implements IStoreService {
+public class  StoreServiceImpl implements IStoreService {
 
     private final StoreRepository storeRepository;
     private final OrderRepository orderRepository;
@@ -24,6 +24,7 @@ public class StoreServiceImpl implements IStoreService {
         Store store = storeRepository.findById(storeId)
                 .orElseThrow(() -> new RuntimeException("Store not found with id: " + storeId));
 
+
         return StoreResponseDto.builder()
                 .storeId(store.getStoreId())
                 .storeName(store.getStoreName())
@@ -32,6 +33,7 @@ public class StoreServiceImpl implements IStoreService {
                 .latitude(store.getLatitude())
                 .longitude(store.getLongitude())
                 .build();
+
     }
 
     @Override

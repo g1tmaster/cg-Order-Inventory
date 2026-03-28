@@ -1,11 +1,14 @@
 package com.spring.order_inventory.service;
 
+import com.spring.order_inventory.dto.InventoryDetailsDto;
 import com.spring.order_inventory.dto.InventoryResponseDto;
+import org.springframework.http.ResponseEntity;
+
 import java.util.List;
 
 public interface IInventoryService {
 
-    List<InventoryResponseDto> getInventoryByStoreId(Integer storeId);
+    List<InventoryDetailsDto> findByStoreId(Integer storeId);
 
-    List<InventoryResponseDto> getInventoryByProductId(Integer productId);
+    List<InventoryDetailsDto> findByProductId(Integer productId);
 }

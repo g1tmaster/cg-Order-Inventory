@@ -27,5 +27,13 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(exceptionDto,HttpStatus.BAD_REQUEST);
     }
 
+    @ResponseBody
+    @ExceptionHandler(ResourseNotFoundException.class)
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    public ResponseEntity<ExceptionDto> responseNotFoundException(ResourseNotFoundException e, HttpServletRequest request){
+        ExceptionDto exceptionDto = new ExceptionDto(404,"NOT_FOUND",e.getMessage(),request.getRequestURI());
+        return new ResponseEntity<>(exceptionDto,HttpStatus.NOT_FOUND);
+    }
+
 
 }
