@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class StoreResponseDto {
-    private Long storeId;
+    private Integer storeId;
     private String storeName;
     private String webAddress;
     private String physicalAddress;
