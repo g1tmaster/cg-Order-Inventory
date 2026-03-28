@@ -3,7 +3,7 @@ package com.spring.order_inventory.dto;
 import lombok.Data;
 
 @Data
-public class ShipmentDTO {
+public class ShipmentResponseDto {
 
     private Long shipmentId;
     private String shipmentStatus;
