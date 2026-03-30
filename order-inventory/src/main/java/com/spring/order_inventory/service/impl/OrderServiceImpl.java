@@ -16,7 +16,6 @@ import com.spring.order_inventory.service.IOrderService;
 public class OrderServiceImpl implements IOrderService {
 	private final OrderRepository orderRepository;
 
-    // Constructor Injection
     public OrderServiceImpl(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }

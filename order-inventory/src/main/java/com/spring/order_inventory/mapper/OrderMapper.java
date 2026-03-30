@@ -11,7 +11,6 @@ import com.spring.order_inventory.entity.OrderItem;
 public class OrderMapper {
 	private OrderMapper() {}
 
-    // Single object mapping
     public static OrderResponseDto toDto(Order order) {
 
         if (order == null) {
