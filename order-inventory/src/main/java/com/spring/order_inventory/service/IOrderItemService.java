@@ -5,9 +5,9 @@ import java.util.List;
 
 public interface IOrderItemService {
 
-    List<OrderItemResponseDto> getAllOrderItemsWithDetails();
+    List<OrderItemResponseDto> getAllOrderItemDetails();
 
-    List<OrderItemResponseDto> getOrderItemsByOrderId(Integer orderId);
+    List<OrderItemResponseDto> getByShipmentId(Integer shipmentId);
 
-    List<OrderItemResponseDto> getOrderByShipmentId(Integer shipmentId);
+    List<OrderItemResponseDto> getByOrderId(Integer orderId);
 }

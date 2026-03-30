@@ -9,13 +9,37 @@ import java.util.List;
 
 public interface OrderItemRepository extends JpaRepository<OrderItem, Integer> {
 
+    @Query(value = """
+    SELECT 
+        oi.line_item_id,
+        oi.order_id,
+        oi.product_id,
+        p.product_name,
+        oi.unit_price,
+        oi.quantity,
+        oi.shipment_id
+    FROM order_items oi
+    JOIN products p ON oi.product_id = p.product_id
+""", nativeQuery = true)
+    List<Object[]> findAllOrderItemsRaw();
+
     List<OrderItem> findByOrderOrderId(Integer id);
 
-    @Query("SELECT oi FROM OrderItem oi " +
-            "JOIN FETCH oi.product " +
-            "WHERE oi.shipment.shipmentId = :shipmentId")
-    List<OrderItem> findByShipmentShipmentId(@Param("shipmentId") Integer shipmentId);
 
+    @Query(value = """
+    SELECT 
+        oi.line_item_id,
+        oi.order_id,
+        oi.product_id,
+        p.product_name,
+        oi.shipment_id,
+        oi.unit_price,
+        oi.quantity
+    FROM order_items oi
+    JOIN products p ON oi.product_id = p.product_id
+    WHERE oi.shipment_id = :shipmentId
+""", nativeQuery = true)
+    List<Object[]> findAllByShipmentRaw(@Param("shipmentId") Integer shipmentId);
     List<OrderItem> findByShipment_ShipmentId(Integer shipmentId);
 
     List<OrderItem> findByOrder_OrderId(Integer orderId);

@@ -34,7 +34,7 @@ public class Shipment {
     private String shipmentStatus;
 
     //NEW: Shipment → Order_Items
-    @OneToMany(mappedBy = "shipment")
+    @OneToMany(mappedBy = "shipment", fetch = FetchType.LAZY)
     @JsonIgnore
     private List<OrderItem> orderItems;
 
