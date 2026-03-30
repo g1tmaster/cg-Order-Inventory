@@ -1,16 +1,15 @@
 package com.spring.order_inventory.dto;
 
-import lombok.Builder;
 import lombok.Data;
 
 @Data
-@Builder
 public class OrderItemResponseDto {
-	private Integer orderItemId;
 
+    private Integer lineItemId;
+    private Integer orderId;
     private Integer productId;
     private String productName;
-
+    private Integer shipmentId;
+    private Double unitPrice;
     private Integer quantity;
-    private Double price;
 }
