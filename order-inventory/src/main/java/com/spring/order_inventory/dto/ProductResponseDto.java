@@ -25,6 +25,5 @@ public class ProductResponseDto {
     private String brand;
     private String size;
     private int rating;
-    private List<OrderItem> orderItems;
-    private List<Inventory> inventories;
+
 }

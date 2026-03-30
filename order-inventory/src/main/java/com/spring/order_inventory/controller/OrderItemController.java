@@ -2,6 +2,8 @@ package com.spring.order_inventory.controller;
 
 import com.spring.order_inventory.dto.OrderItemResponseDto;
 import com.spring.order_inventory.service.IOrderItemService;
+import com.spring.order_inventory.service.IOrderItemsService;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +16,7 @@ import java.util.List;
 public class OrderItemController {
 
     private final IOrderItemService orderItemService;
+    private final IOrderItemsService iOrderItemsService;
 
     @GetMapping("/details")
     public ResponseEntity<List<OrderItemResponseDto>> getAllOrderItemDetails() {
