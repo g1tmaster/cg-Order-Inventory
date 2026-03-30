@@ -28,11 +28,11 @@ public class OrderItemServiceImpl implements IOrderItemService {
 
         return items.stream()
                 .map(item -> OrderItemResponseDto.builder()
-                        .orderItemId(item.getLineItemId())
+                        .orderId(item.getLineItemId())
                         .productId(item.getProduct().getProductId())
                         .productName(item.getProduct().getProductName())
                         .quantity(item.getQuantity())
-                        .price(item.getUnitPrice())
+                        .unitPrice(item.getUnitPrice())
                         .build())
                 .toList();
     }
