@@ -48,10 +48,5 @@ public class Product {
 
     @Column(name = "rating")
     private Integer rating;
-    
-    @OneToMany(mappedBy = "product")
-    private List<OrderItem> orderItems;
-    
-    @OneToMany(mappedBy = "product")
-    private List<Inventory> inventories;
+
 }
