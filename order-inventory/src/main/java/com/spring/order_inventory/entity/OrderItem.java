@@ -1,10 +1,15 @@
 package com.spring.order_inventory.entity;
+
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 @Entity
 @Table(name = "order_items")
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+
 public class OrderItem {
 
     @Id
@@ -12,19 +17,19 @@ public class OrderItem {
     @Column(name = "line_item_id", nullable = false)
     private Integer lineItemId;
 
-    // Many Order_Items belong to one Order
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)   // ← LAZY
     @JoinColumn(name = "order_id", nullable = false)
+    @ToString.Exclude
     private Order order;
 
-    // Many Order_Items refer to one Product
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)   // ← LAZY
     @JoinColumn(name = "product_id", nullable = false)
+    @ToString.Exclude
     private Product product;
 
-    // Many Order_Items can be part of one Shipment
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)   // ← LAZY
     @JoinColumn(name = "shipment_id")
+    @ToString.Exclude
     private Shipment shipment;
 
     @Column(name = "unit_price", nullable = false)

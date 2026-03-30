@@ -2,6 +2,8 @@ package com.spring.order_inventory.service.impl;
 
 import com.spring.order_inventory.dto.StoreResponseDto;
 import com.spring.order_inventory.entity.Store;
+import com.spring.order_inventory.exception.IdNotFoundException;
+import com.spring.order_inventory.exception.InvalidFormatException;
 import com.spring.order_inventory.repository.OrderRepository;
 import com.spring.order_inventory.repository.StoreRepository;
 import com.spring.order_inventory.service.IStoreService;
@@ -13,7 +15,7 @@ import com.spring.order_inventory.dto.OrderResponseDto;
 
 @Service
 @RequiredArgsConstructor
-public class StoreServiceImpl implements IStoreService {
+public class  StoreServiceImpl implements IStoreService {
 
     private final StoreRepository storeRepository;
     private final OrderRepository orderRepository;
@@ -21,8 +23,12 @@ public class StoreServiceImpl implements IStoreService {
 
     @Override
     public StoreResponseDto getStoreById(Integer storeId) {
+        if (storeId<0){
+            throw new InvalidFormatException("ID entered is less than 0, please enter valid ID");
+        }
         Store store = storeRepository.findById(storeId)
-                .orElseThrow(() -> new RuntimeException("Store not found with id: " + storeId));
+                .orElseThrow(() -> new IdNotFoundException("ID not found in stores table"));
+
 
         return StoreResponseDto.builder()
                 .storeId(store.getStoreId())
@@ -32,6 +38,7 @@ public class StoreServiceImpl implements IStoreService {
                 .latitude(store.getLatitude())
                 .longitude(store.getLongitude())
                 .build();
+
     }
 
     @Override

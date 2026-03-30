@@ -24,11 +24,11 @@ public class OrderMapper {
             for (OrderItem item : order.getItems()) {
 
                 OrderItemResponseDto itemDto = OrderItemResponseDto.builder()
-                        .orderItemId(item.getLineItemId())
+                        .orderId(item.getLineItemId())
                         .productId(item.getProduct() != null ? item.getProduct().getProductId() : null)
                         .productName(item.getProduct() != null ? item.getProduct().getProductName() : null)
                         .quantity(item.getQuantity())
-                        .price(item.getUnitPrice())
+                        .unitPrice(item.getUnitPrice())
                         .build();
 
                 itemDtos.add(itemDto);
