@@ -37,4 +37,9 @@ public class Shipment {
     @OneToMany(mappedBy = "shipment")
     @JsonIgnore
     private List<OrderItem> orderItems;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    private Order order;
+
 }

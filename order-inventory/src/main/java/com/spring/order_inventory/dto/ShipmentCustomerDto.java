@@ -3,18 +3,15 @@ package com.spring.order_inventory.dto;
 import lombok.Builder;
 import lombok.Data;
 
-@Data
 @Builder
-public class ShipmentResponseDto {
+@Data
+public class ShipmentCustomerDto {
 
     private Integer shipmentId;
     private String shipmentStatus;
 
-    // Customer
-    private Integer customerId;
-    private String customerName;
+    private String deliveryStatus;
 
-    // Store
     private Integer storeId;
     private String storeName;
 }
