@@ -1,35 +1,32 @@
 package com.spring.order_inventory.controller;
 
 import com.spring.order_inventory.dto.OrderItemResponseDto;
-import com.spring.order_inventory.service.IOrderItemsService;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import com.spring.order_inventory.service.IOrderItemService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/order-items")
+@RequiredArgsConstructor
 public class OrderItemController {
 
-    @Autowired
-    private IOrderItemsService orderItemsService;
+    private final IOrderItemService orderItemService;
 
-    // ✅ 1. GET ALL DETAILS
     @GetMapping("/details")
-    public List<OrderItemResponseDto> getAllOrderItemDetails() {
-        return orderItemsService.getAllOrderItemDetails();
+    public ResponseEntity<List<OrderItemResponseDto>> getAllOrderItemDetails() {
+        return ResponseEntity.ok(orderItemService.getAllOrderItemsWithDetails());
     }
 
-    // ✅ 2. GET BY SHIPMENT ID
     @GetMapping("/shipment/{shipmentId}")
-    public List<OrderItemResponseDto> getByShipmentId(@PathVariable Integer shipmentId) {
-        return orderItemsService.getByShipmentId(shipmentId);
+    public ResponseEntity<List<OrderItemResponseDto>> getByShipmentId(@PathVariable Integer shipmentId) {
+        return ResponseEntity.ok(orderItemService.getOrderByShipmentId(shipmentId));
     }
 
-    // ✅ 3. GET BY ORDER ID
     @GetMapping("/order/{orderId}")
-    public List<OrderItemResponseDto> getByOrderId(@PathVariable Integer orderId) {
-        return orderItemsService.getByOrderId(orderId);
+    public ResponseEntity<List<OrderItemResponseDto>> getByOrderId(@PathVariable Integer orderId) {
+        return ResponseEntity.ok(orderItemService.getOrderItemsByOrderId(orderId));
     }
 }
