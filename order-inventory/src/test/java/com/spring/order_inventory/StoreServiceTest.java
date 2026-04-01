@@ -1,6 +1,6 @@
 package com.spring.order_inventory;
 
-//import com.spring.order_inventory.entity.Store;
+//import com.spring.order_inventory.entity.StoreServiceTest;
 import com.spring.order_inventory.constants.OrderStatus;
 import com.spring.order_inventory.dto.OrderResponseDto;
 import com.spring.order_inventory.dto.StoreResponseDto;
@@ -28,7 +28,7 @@ import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class Store {
+public class StoreServiceTest {
     @Mock
     private StoreRepository storeRepository;
 
