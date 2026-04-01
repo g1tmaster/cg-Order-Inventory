@@ -43,6 +43,9 @@ public class  StoreServiceImpl implements IStoreService {
 
     @Override
     public List<OrderResponseDto> getOrdersByStoreId(Integer storeId) {
+        if (storeId<0){
+            throw new InvalidFormatException("ID entered is less than 0, please enter valid ID");
+        }
         List<Order> orders = orderRepository.findByStoreStoreId(storeId);
 
         return orders.stream()
