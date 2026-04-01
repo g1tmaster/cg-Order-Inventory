@@ -1,0 +1,137 @@
+//Repo
+
+@Query(value = """
+SELECT oi.line_item_id, oi.order_id, oi.product_id, p.product_name,
+       oi.shipment_id, oi.unit_price, oi.quantity
+FROM order_items oi
+JOIN products p ON oi.product_id = p.product_id
+""", nativeQuery = true)
+List<Object[]> findAllItemsRaw();
+
+
+// By OrderId
+@Query(value = """
+SELECT oi.line_item_id, oi.order_id, oi.product_id, p.product_name,
+       oi.shipment_id, oi.unit_price, oi.quantity
+FROM order_items oi
+JOIN products p ON oi.product_id = p.product_id
+WHERE oi.order_id = :orderId
+""", nativeQuery = true)
+List<Object[]> findByOrderIdRaw(Integer orderId);
+
+
+// By ShipmentId
+@Query(value = """
+SELECT oi.line_item_id, oi.order_id, oi.product_id, p.product_name,
+       oi.shipment_id, oi.unit_price, oi.quantity
+FROM order_items oi
+JOIN products p ON oi.product_id = p.product_id
+WHERE oi.shipment_id = :shipmentId
+""", nativeQuery = true)
+List<Object[]> findByShipmentIdRaw(Integer shipmentId);
+
+
+// By ProductId
+@Query(value = """
+SELECT oi.line_item_id, oi.order_id, oi.product_id, p.product_name,
+       oi.shipment_id, oi.unit_price, oi.quantity
+FROM order_items oi
+JOIN products p ON oi.product_id = p.product_id
+WHERE oi.product_id = :productId
+""", nativeQuery = true)
+List<Object[]> findByProductIdRaw(Integer productId);
+
+//Service
+
+List<OrderItemResponseDto> getAll();
+List<OrderItemResponseDto> getByOrderId(Integer orderId);
+List<OrderItemResponseDto> getByShipmentId(Integer shipmentId);
+List<OrderItemResponseDto> getByProductId(Integer productId);
+
+OrderItemResponseDto create(OrderItemResponseDto dto);
+OrderItemResponseDto update(Integer id, OrderItemResponseDto dto);
+void delete(Integer id);
+
+
+//impl
+private OrderItemResponseDto mapRow(Object[] row) {
+    OrderItemResponseDto dto = new OrderItemResponseDto();
+    dto.setLineItemId((Integer) row[0]);
+    dto.setOrderId((Integer) row[1]);
+    dto.setProductId((Integer) row[2]);
+    dto.setProductName((String) row[3]);
+    dto.setShipmentId((Integer) row[4]);
+    dto.setUnitPrice(((Number) row[5]).doubleValue());
+    dto.setQuantity((Integer) row[6]);
+    return dto;
+}
+
+//GETALL
+@Override
+public List<OrderItemResponseDto> getAll() {
+    return orderItemRepository.findAllItemsRaw()
+            .stream()
+            .map(this::mapRow)
+            .toList();
+}
+
+
+
+//BY ORDERID
+@Override
+public List<OrderItemResponseDto> getByOrderId(Integer orderId) {
+    return orderItemRepository.findByOrderIdRaw(orderId)
+            .stream()
+            .map(this::mapRow)
+            .toList();
+}
+
+
+//SHIPMENT
+@Override
+public List<OrderItemResponseDto> getByShipmentId(Integer shipmentId) {
+    return orderItemRepository.findByShipmentIdRaw(shipmentId)
+            .stream()
+            .map(this::mapRow)
+            .toList();
+}
+
+//PRODUCT
+@Override
+public List<OrderItemResponseDto> getByProductId(Integer productId) {
+    return orderItemRepository.findByProductIdRaw(productId)
+            .stream()
+            .map(this::mapRow)
+            .toList();
+}
+
+
+//CREATE
+
+@Override
+public OrderItemResponseDto create(OrderItemResponseDto dto) {
+    OrderItem entity = new OrderItem();
+    entity.setUnitPrice(dto.getUnitPrice());
+    entity.setQuantity(dto.getQuantity());
+    return OrderItemMapper.toDTO(orderItemRepository.save(entity));
+}
+
+
+//UPDATE
+
+@Override
+public OrderItemResponseDto update(Integer id, OrderItemResponseDto dto) {
+    OrderItem item = orderItemRepository.findById(id).orElseThrow();
+
+    item.setUnitPrice(dto.getUnitPrice());
+    item.setQuantity(dto.getQuantity());
+
+    return OrderItemMapper.toDTO(orderItemRepository.save(item));
+}
+
+
+//DELETE
+@Override
+public void delete(Integer id) {
+    orderItemRepository.deleteById(id);
+}
