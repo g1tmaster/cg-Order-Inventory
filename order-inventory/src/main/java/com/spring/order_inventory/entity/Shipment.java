@@ -33,10 +33,10 @@ public class Shipment {
     @Column(name = "shipment_status")
     private String shipmentStatus;
 
-    //NEW: Shipment → Order_Items
-    @OneToMany(mappedBy = "shipment")
-    @JsonIgnore
-    private List<OrderItem> orderItems;
+//    //NEW: Shipment → Order_Items
+//    @OneToMany(mappedBy = "shipment")
+//    @JsonIgnore
+//    private List<OrderItem> orderItems;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")

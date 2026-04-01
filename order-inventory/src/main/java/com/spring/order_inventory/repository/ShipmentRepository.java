@@ -23,4 +23,5 @@ public interface ShipmentRepository extends JpaRepository<Shipment, Integer> {
             "JOIN FETCH s.store " +
             "WHERE s.customer.customerId = :customerId")
     List<Shipment> findByCustomerId(@Param("customerId") Integer customerId);
+
 }

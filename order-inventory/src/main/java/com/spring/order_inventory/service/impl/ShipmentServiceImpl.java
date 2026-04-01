@@ -20,6 +20,7 @@ public class ShipmentServiceImpl implements IShipmentService {
     private final ShipmentRepository shipmentRepository;
 
     //API 1
+    @Override
     public ShipmentResponseDto getShipmentById(Integer id) {
 
         Shipment shipment = shipmentRepository.findShipmentWithDetails(id)
