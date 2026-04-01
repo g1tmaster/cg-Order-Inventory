@@ -36,9 +36,8 @@ class OrderItemServiceTest {
         item.setUnitPrice(100.0);
     }
 
-    // ==============================
-    // ✅ 1. getAllOrderItemDetails()
-    // ==============================
+    // 1. getAllOrderItemDetails()
+
 
     @Test
     void getAll_positive() {
@@ -73,9 +72,7 @@ class OrderItemServiceTest {
         });
     }
 
-    // ==============================
-    // ✅ 2. getByShipmentId()
-    // ==============================
+    // 2. getByShipmentId()
 
     @Test
     void getByShipmentId_positive() {
