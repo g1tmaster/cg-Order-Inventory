@@ -3,6 +3,8 @@ package com.spring.order_inventory.config;
 import java.security.Key;
 import java.util.Date;
 
+import javax.crypto.SecretKey;
+
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Jwts;
@@ -14,7 +16,7 @@ import io.jsonwebtoken.security.Keys;
 public class JwtUtil {
 	private final String SECRET = "mysecretkeymysecretkeymysecretkey123";
 	
-	private final Key key = Keys.hmacShaKeyFor(SECRET.getBytes());
+	private final SecretKey key = Keys.hmacShaKeyFor(SECRET.getBytes());
 
 	
 	public String generateToken(String email) {
@@ -24,5 +26,28 @@ public class JwtUtil {
 				.expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60))
 				.signWith(key)
 				.compact();
+	}
+	
+	public String extractEmail(String token) {
+		return Jwts.parser()
+				.verifyWith(key)
+				.build()
+				.parseSignedClaims(token)
+				.getPayload()
+				.getSubject();
+				
+	}
+	
+	public boolean validateToken(String token) {
+		try {
+			Jwts.parser()
+					.verifyWith(key)
+					.build()
+					.parseSignedClaims(token);
+			
+			return true;
+		}catch (Exception e){
+			return false;
+		}
 	}
 }
