@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface InventoryRepository extends JpaRepository<Inventory, Long> {
+public interface InventoryRepository extends JpaRepository<Inventory, Integer> {
 
     @Query("SELECT new com.spring.order_inventory.dto.InventoryDetailsDto(" +
             "i.inventoryId, s.storeId, s.storeName, p.productId, p.productName, i.quantity) " +

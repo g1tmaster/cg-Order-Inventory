@@ -21,6 +21,7 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public ProductResponseDto getProductById(Integer id) {
+
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new IdNotFoundException("Product not found with id: " + id));
         return ProductMapper.productToDto(product);
