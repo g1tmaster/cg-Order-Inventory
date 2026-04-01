@@ -2,6 +2,7 @@ package com.spring.order_inventory.controller;
 
 import com.spring.order_inventory.dto.ShipmentCustomerDto;
 import com.spring.order_inventory.dto.ShipmentResponseDto;
+import com.spring.order_inventory.service.IShipmentService;
 import com.spring.order_inventory.service.impl.ShipmentServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ShipmentController {
 
-    private final ShipmentServiceImpl shipmentService;
+    private final IShipmentService shipmentService;
 
     //GET /api/shipments/{shipmentId}
     @GetMapping("/{shipmentId}")
@@ -26,9 +27,7 @@ public class ShipmentController {
 
     //GET /api/shipments/customer/{customerId}
     @GetMapping("/customer/{customerId}")
-    public List<ShipmentCustomerDto> getShipmentsByCustomer(
-            @PathVariable Integer customerId) {
-
+    public List<ShipmentCustomerDto> getShipmentsByCustomer(@PathVariable Integer customerId) {
         return shipmentService.getShipmentsByCustomer(customerId);
     }
 }
