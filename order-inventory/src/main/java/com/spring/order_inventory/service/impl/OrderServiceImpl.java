@@ -2,6 +2,10 @@ package com.spring.order_inventory.service.impl;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.spring.order_inventory.dto.OrderResponseDto;
@@ -49,6 +53,26 @@ public class OrderServiceImpl implements IOrderService {
 
         return OrderMapper.toDtoList(orders);
     }
+    
+    @Override
+    public Page<OrderResponseDto> getOrdersPageByCustomerId(Integer customerId, int page, int size) {
+
+//        Pageable pageable = PageRequest.of(page, size);
+    	
+    	int correctedPage = (page > 0) ? page - 1 : 0;
+    	Pageable pageable = PageRequest.of(correctedPage, size);
+
+        Page<Order> orderPage = orderRepository
+                .findOrdersPageByCustomerId(customerId, pageable);
+
+        // ✅ Use your existing mapper
+        List<OrderResponseDto> dtoList =
+                OrderMapper.toDtoList(orderPage.getContent());
+
+        return new PageImpl<>(dtoList, pageable, orderPage.getTotalElements());
+    }
+    
+    
     
     public List<OrderResponseDto> getOrdersByStoreId(Integer storeId) {
 
