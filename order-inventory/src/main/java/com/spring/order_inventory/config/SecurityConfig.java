@@ -7,14 +7,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.cors.*;
 
 import java.util.List;
 
 @Configuration
 public class SecurityConfig {
+
 	private final JwtFilter jwtFilter;
 
 	public SecurityConfig(JwtFilter jwtFilter) {
@@ -33,6 +32,7 @@ public class SecurityConfig {
 		config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
 		config.setAllowedHeaders(List.of("*"));
 		config.setAllowCredentials(true);
+
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", config);
 		return source;
@@ -43,10 +43,28 @@ public class SecurityConfig {
 		http
 				.cors(cors -> cors.configurationSource(corsConfigurationSource()))
 				.csrf(csrf -> csrf.disable())
+
 				.authorizeHttpRequests(auth -> auth
-						.anyRequest().permitAll()
+						.requestMatchers("/login", "/perform_login", "/auth/login", "/css/**").permitAll()
+						.anyRequest().authenticated()
 				)
+
+				.formLogin(form -> form
+						.loginPage("/login")
+						.loginProcessingUrl("/perform_login")
+						.usernameParameter("email")   // 🔥 IMPORTANT
+						.passwordParameter("password")
+						.defaultSuccessUrl("/dashboard", true)
+						.failureUrl("/login?error=true")
+				)
+
+				.logout(logout -> logout
+						.logoutUrl("/logout")
+						.logoutSuccessUrl("/login")
+				)
+
 				.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
 		return http.build();
-}}
+	}
+}
