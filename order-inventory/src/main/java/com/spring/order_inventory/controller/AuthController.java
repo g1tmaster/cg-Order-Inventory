@@ -1,15 +1,13 @@
 package com.spring.order_inventory.controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.spring.order_inventory.dto.LoginRequestDto;
 import com.spring.order_inventory.dto.LoginResponseDto;
 import com.spring.order_inventory.service.IAuthService;
 
+@CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
