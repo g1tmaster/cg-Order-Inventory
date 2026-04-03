@@ -24,13 +24,13 @@ public class ProductController {
 
    @GetMapping("/product/{productId}")
     public ResponseEntity<ProductResponseDto> getProductById( @PathVariable Integer productId){
-    return new ResponseEntity(iProductService.getProductById(productId),HttpStatus.OK);
+    return new ResponseEntity<>(iProductService.getProductById(productId),HttpStatus.OK);
     }
 
 
     @GetMapping("/brand/{brand}")
     public ResponseEntity<List<ProductResponseDto>> getProductsByBrand( @PathVariable String brand) {
-        return new ResponseEntity(iProductService.getProductsByBrand(brand),HttpStatus.OK);
+        return new ResponseEntity<>(iProductService.getProductsByBrand(brand),HttpStatus.OK);
     }
 
 }

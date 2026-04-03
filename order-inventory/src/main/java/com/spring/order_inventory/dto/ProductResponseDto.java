@@ -1,10 +1,6 @@
 package com.spring.order_inventory.dto;
 
 import java.math.BigDecimal;
-import java.util.List;
-
-import com.spring.order_inventory.entity.Inventory;
-import com.spring.order_inventory.entity.OrderItem;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

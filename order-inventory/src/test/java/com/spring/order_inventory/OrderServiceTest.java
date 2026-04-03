@@ -9,8 +9,6 @@ import static org.mockito.Mockito.when;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -25,7 +23,6 @@ import com.spring.order_inventory.entity.Order;
 import com.spring.order_inventory.entity.Store;
 import com.spring.order_inventory.exception.IdNotFoundException;
 import com.spring.order_inventory.repository.OrderRepository;
-import com.spring.order_inventory.service.IOrderService;
 import com.spring.order_inventory.service.impl.OrderServiceImpl;
 
 @ExtendWith(MockitoExtension.class)

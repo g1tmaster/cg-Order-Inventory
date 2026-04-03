@@ -1,7 +1,6 @@
 package com.spring.order_inventory.config;
 
 import java.io.IOException;
-import java.util.Collection;
 import java.util.Collections;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,7 +16,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @Component
 public class JwtFilter extends OncePerRequestFilter{
 	
-	private JwtUtil jwtUtil;
+	private final JwtUtil jwtUtil;
 	
 	public JwtFilter(JwtUtil jwtUtil) {
 		this.jwtUtil = jwtUtil;

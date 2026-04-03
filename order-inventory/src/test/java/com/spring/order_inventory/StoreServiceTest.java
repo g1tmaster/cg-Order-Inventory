@@ -1,6 +1,6 @@
 package com.spring.order_inventory;
 
-//import com.spring.order_inventory.entity.StoreServiceTest;
+import com.spring.order_inventory.entity.Store;
 import com.spring.order_inventory.constants.OrderStatus;
 import com.spring.order_inventory.dto.OrderResponseDto;
 import com.spring.order_inventory.dto.StoreResponseDto;
@@ -20,9 +20,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
@@ -43,7 +40,7 @@ public class StoreServiceTest {
     @Test
     void testgetStoreById(){
         //fake entity
-        com.spring.order_inventory.entity.Store mockStore = new com.spring.order_inventory.entity.Store();
+        Store mockStore = new Store();
         mockStore.setStoreId(1);
         mockStore.setStoreName("Online");
         mockStore.setWebAddress("example.com");
@@ -95,7 +92,7 @@ public class StoreServiceTest {
         mockCustomer.setCustomerId(22);
         mockCustomer.setFullName("Alan Turing");
 
-        com.spring.order_inventory.entity.Store mockStore = new com.spring.order_inventory.entity.Store();
+        Store mockStore = new Store();
         mockStore.setStoreId(12);
         mockStore.setStoreName("TestShop");
 

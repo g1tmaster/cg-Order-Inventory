@@ -10,7 +10,7 @@ import java.util.List;
 public interface OrderItemRepository extends JpaRepository<OrderItem, Integer> {
 
     @Query(value = """
-    SELECT 
+    SELECT
         oi.line_item_id,
         oi.order_id,
         oi.product_id,
@@ -27,7 +27,7 @@ public interface OrderItemRepository extends JpaRepository<OrderItem, Integer> {
 
 
     @Query(value = """
-    SELECT 
+    SELECT
         oi.line_item_id,
         oi.order_id,
         oi.product_id,

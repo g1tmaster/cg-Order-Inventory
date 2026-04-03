@@ -1,7 +1,6 @@
 package com.spring.order_inventory.service.impl;
 
 import com.spring.order_inventory.dto.OrderItemResponseDto;
-import com.spring.order_inventory.entity.OrderItem;
 import com.spring.order_inventory.mapper.OrderItemMapper;
 import com.spring.order_inventory.repository.OrderItemRepository;
 import com.spring.order_inventory.service.IOrderItemService;

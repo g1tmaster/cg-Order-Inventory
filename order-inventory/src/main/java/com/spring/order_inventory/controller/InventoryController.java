@@ -1,19 +1,16 @@
 package com.spring.order_inventory.controller;
 
 import com.spring.order_inventory.dto.InventoryDetailsDto;
-import com.spring.order_inventory.dto.OrderResponseDto;
 import com.spring.order_inventory.service.IInventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/inventory")
+//@CrossOrigin(origins = "http://localhost:8081")
 public class InventoryController {
 
     private final IInventoryService iInventoryService;

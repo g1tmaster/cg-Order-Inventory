@@ -2,8 +2,6 @@ package com.spring.order_inventory.controller;
 
 import com.spring.order_inventory.dto.OrderResponseDto;
 import com.spring.order_inventory.dto.StoreResponseDto;
-import com.spring.order_inventory.entity.Order;
-import com.spring.order_inventory.service.IStoreService;
 import com.spring.order_inventory.service.IStoreService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
