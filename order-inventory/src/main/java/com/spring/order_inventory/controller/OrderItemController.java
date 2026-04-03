@@ -30,4 +30,5 @@ public class OrderItemController {
     public ResponseEntity<List<OrderItemResponseDto>> getByOrderId(@PathVariable Integer orderId) {
         return ResponseEntity.ok(orderItemService.getByOrderId(orderId));
     }
+
 }
