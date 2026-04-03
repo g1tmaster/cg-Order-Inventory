@@ -107,9 +107,8 @@ class OrderItemServiceTest {
         });
     }
 
-    // ==============================
-    // ✅ 3. getByOrderId()
-    // ==============================
+    // 3. getByOrderId()
+
 
     @Test
     void getByOrderId_positive() {

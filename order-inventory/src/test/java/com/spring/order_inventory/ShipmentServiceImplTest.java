@@ -42,7 +42,7 @@ public class ShipmentServiceImplTest {
         Shipment shipment = new Shipment();
         shipment.setShipmentId(id);
 
-        //ADD CUSTOMER (IMPORTANT)
+        //ADD CUSTOMER
         Customer customer = new Customer();
         customer.setCustomerId(100);
         shipment.setCustomer(customer);
@@ -81,12 +81,12 @@ public class ShipmentServiceImplTest {
         Shipment shipment = new Shipment();
         shipment.setShipmentId(1);
 
-        //IMPORTANT: Set Store (to avoid NPE)
+
         Store store = new Store();
         store.setStoreId(101);
         shipment.setStore(store);
 
-        //IMPORTANT: Set Customer if used in mapper
+
         Customer customer = new Customer();
         customer.setCustomerId(1);
         shipment.setCustomer(customer);
