@@ -16,6 +16,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 
 import com.spring.order_inventory.constants.OrderStatus;
 import com.spring.order_inventory.dto.OrderResponseDto;
@@ -111,6 +113,28 @@ public class OrderServiceTest {
 	    assertEquals(2, result.get(1).getOrderId());
 	    
 		verify(orderRepository).findByCustomerCustomerId(1);
+	}
+	
+	@Test
+	void testGetOrdersPageByCustomerId() {
+	    Order order = createMockOrder();
+
+	    Page<Order> mockPage = new PageImpl<>(List.of(order));
+
+	    when(orderRepository.findOrdersPageByCustomerId(
+	            org.mockito.ArgumentMatchers.eq(1),
+	            org.mockito.ArgumentMatchers.any()
+	    )).thenReturn(mockPage);
+
+	    Page<OrderResponseDto> result =
+	        orderService.getOrdersPageByCustomerId(1, 1, 10);
+
+	    assertEquals(1, result.getContent().size());
+	    verify(orderRepository)
+	        .findOrdersPageByCustomerId(
+	            org.mockito.ArgumentMatchers.eq(1),
+	            org.mockito.ArgumentMatchers.any()
+	        );
 	}
 	
 	@Test
