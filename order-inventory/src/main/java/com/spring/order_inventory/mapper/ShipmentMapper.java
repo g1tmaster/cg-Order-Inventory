@@ -27,7 +27,7 @@ public class ShipmentMapper {
                 .shipmentId(s.getShipmentId())
                 .shipmentStatus(s.getShipmentStatus())
 
-                // ⚠️ No delivery entity → using shipmentStatus
+                //  No delivery entity → using shipmentStatus
                 .deliveryStatus(s.getShipmentStatus())
 
                 .storeId(s.getStore().getStoreId())

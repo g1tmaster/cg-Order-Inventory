@@ -34,7 +34,7 @@ class InventoryServiceImplTest {
         );
     }
 
-    // ================= STORE ID =================
+
 
     //  Positive Test
     @Test
@@ -65,7 +65,7 @@ class InventoryServiceImplTest {
                 .findByStoreId(any());
     }
 
-    // ================= PRODUCT ID =================
+
 
 
     @Test

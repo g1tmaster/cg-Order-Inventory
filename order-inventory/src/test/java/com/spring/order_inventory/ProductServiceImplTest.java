@@ -42,7 +42,7 @@ class ProductServiceImplTest {
         product.setRating(4); // int
     }
 
-    // ================= getProductById =================
+
 
     //  Positive Test
     @Test
@@ -76,7 +76,7 @@ class ProductServiceImplTest {
         verify(productRepository, times(1)).findById(1);
     }
 
-    // ================= getProductsByBrand =================
+
 
     // Positive Test
     @Test
